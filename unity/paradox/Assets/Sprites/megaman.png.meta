@@ -1,0 +1,315 @@
+fileFormatVersion: 2
+guid: 7388242b20e258c41bdb9811970b5b92
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: megaman_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 220
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 220
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 220
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_3
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 220
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_4
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 220
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_5
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 220
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 182
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_7
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 182
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_8
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 182
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_9
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 182
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_10
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 182
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_11
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 176
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_12
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 176
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_13
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 132
+        width: 24
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_14
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 132
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_15
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 133
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_16
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 133
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_17
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 135
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_18
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 135
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_19
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 135
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_20
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 91
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_21
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 91
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_22
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 92
+        width: 38
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_23
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 92
+        width: 49
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 60
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 60
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_26
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 60
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_27
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 60
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_28
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 18
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: megaman_29
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 18
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
