@@ -37,8 +37,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterController.cs" />
-    <Compile Include="HeroController.cs" />
+    <Compile Include="Camera\CharacterFollower.cs" />
+    <Compile Include="Character\CharacterController2D.cs" />
+    <Compile Include="Character\HeroController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿namespace Paradox
+﻿namespace Paradox.Character
 {
     using System;
     using UnityEngine;
@@ -28,7 +28,7 @@
     /// 2D character controller.
     /// </summary>
     [RequireComponent(typeof(BoxCollider2D))]
-    public class CharacterController : MonoBehaviour
+    public class CharacterController2D : MonoBehaviour
     {
         private float horizontalRaySeparation;
         private float verticalRaySeparation;

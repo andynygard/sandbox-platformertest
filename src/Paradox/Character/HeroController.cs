@@ -1,4 +1,4 @@
-﻿namespace Paradox
+﻿namespace Paradox.Character
 {
     using System;
     using UnityEngine;
@@ -6,11 +6,11 @@
     /// <summary>
     /// The controller for the hero.
     /// </summary>
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController2D))]
     [RequireComponent(typeof(Animator))]
     public class HeroController : MonoBehaviour
     {
-        private CharacterController characterController;
+        private CharacterController2D characterController;
         private Animator animator;
         private bool jumpInProgress;
 
@@ -44,7 +44,7 @@
         /// </summary>
         public void Awake()
         {
-            this.characterController = this.GetComponent<CharacterController>();
+            this.characterController = this.GetComponent<CharacterController2D>();
             this.animator = this.GetComponent<Animator>();
         }
 
