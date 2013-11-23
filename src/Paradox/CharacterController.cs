@@ -140,9 +140,9 @@
         /// Draws a ray in the unity editor.
         /// </summary>
         [System.Diagnostics.Conditional("DEBUG")]
-        private void DrawRay(Vector3 start, Vector3 dir, Color color)
+        private void DrawRay(Vector3 start, Vector3 dir, Color color, float length)
         {
-            Debug.DrawRay(start, dir, color);
+            Debug.DrawRay(start, dir * length, color);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@
                 RaycastHit2D hit = Physics2D.Raycast(ray, rayDirection, rayDistance, mask);
 
                 // Debug draw a ray
-                this.DrawRay(ray, rayDirection, hit ? Color.red : Color.blue);
+                this.DrawRay(ray, rayDirection, hit ? Color.red : Color.blue, rayDistance);
 
                 if (hit)
                 {
@@ -223,7 +223,7 @@
                 RaycastHit2D hit = Physics2D.Raycast(ray, rayDirection, rayDistance, mask);
 
                 // Debug draw a ray
-                this.DrawRay(ray, rayDirection, hit ? Color.red : Color.blue);
+                this.DrawRay(ray, rayDirection, hit ? Color.red : Color.blue, rayDistance);
 
                 if (hit)
                 {
