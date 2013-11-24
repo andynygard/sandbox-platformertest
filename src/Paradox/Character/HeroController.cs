@@ -13,6 +13,7 @@
         private CharacterController2D characterController;
         private Animator animator;
         private bool jumpButtonPressed;
+        private float jumpStartAirspeed;
 
         /// <summary>
         /// The gravity effecting the character.
@@ -30,19 +31,24 @@
         public float MaxJumpHeight = 8;
 
         /// <summary>
-        /// The speed scalar when turning.
+        /// The ground acceleration.
         /// </summary>
-        public float TurnSpeedScalar = 2f;
+        public float GroundAcceleration = 2;
 
         /// <summary>
-        /// The time (in seconds) that it takes to achieve maximum run speed on the ground.
+        /// The speed scaling when turning on the ground.
         /// </summary>
-        public float TimeToRunOnGround = 1;
+        public float GroundTurnScaling = 2f;
 
         /// <summary>
-        /// The time (in seconds) that it takes to achieve maximum run speed in the air.
+        /// The air acceleration.
         /// </summary>
-        public float TimeToRunInAir = 5;
+        public float AirAcceleration = 1;
+
+        /// <summary>
+        /// The speed scaling when turning in the air.
+        /// </summary>
+        public float AirTurnScalar = 2f;
 
         /// <summary>
         /// Called when the component is being instantiated.
@@ -76,6 +82,24 @@
                     new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
             }
 
+            // Calculate the target velocity
+            float targetVelocity = horizontal * this.RunSpeed;
+
+            // Calculate acceleration factor
+            float accelerationFactor = this.characterController.IsGrounded ?
+                this.GroundAcceleration : this.AirAcceleration;
+            if (this.characterController.IsGrounded && velocity.x * targetVelocity < 0)
+            {
+                accelerationFactor *= this.GroundTurnScaling;
+            }
+            else if (!this.characterController.IsGrounded && Mathf.Abs(velocity.x) < this.jumpStartAirspeed)
+            {
+                accelerationFactor *= this.AirTurnScalar;
+            }
+
+            // Set the velocity by interpolating with the acceleration factor
+            velocity.x = Mathf.Lerp(velocity.x, targetVelocity, Time.deltaTime * accelerationFactor);
+
             if (this.jumpButtonPressed)
             {
                 // Check if jump button was released
@@ -99,21 +123,12 @@
                     {
                         // Apply the velocity required to reach the jump height
                         velocity.y = Mathf.Sqrt(-2 * this.MaxJumpHeight * this.Gravity);
+
+                        // Retain the horizontal velocity at start of jump
+                        this.jumpStartAirspeed = Mathf.Abs(velocity.x);
                     }
                 }
             }
-
-            // Calculate the target velocity
-            float targetVelocity = horizontal * this.RunSpeed;
-
-            // Apply damping to velocity
-            float damping = this.characterController.IsGrounded ? this.TimeToRunOnGround : this.TimeToRunInAir;
-            if (velocity.x * targetVelocity < 0)
-            {
-                damping /= this.TurnSpeedScalar;
-            }
-
-            velocity.x = Mathf.Lerp(velocity.x, targetVelocity, Time.deltaTime / damping);
 
             // Apply gravity
             velocity.y += this.Gravity * Time.deltaTime;
