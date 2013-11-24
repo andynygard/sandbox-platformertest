@@ -17,17 +17,22 @@
         /// <summary>
         /// The gravity effecting the character.
         /// </summary>
-        public float Gravity = -9.8f;
+        public float Gravity = -50;
 
         /// <summary>
         /// The run speed.
         /// </summary>
-        public float RunSpeed = 8f;
+        public float RunSpeed = 25f;
 
         /// <summary>
         /// The maximum jump height.
         /// </summary>
-        public float MaxJumpHeight = 5;
+        public float MaxJumpHeight = 8;
+
+        /// <summary>
+        /// The speed scalar when turning.
+        /// </summary>
+        public float TurnSpeedScalar = 2f;
 
         /// <summary>
         /// The time (in seconds) that it takes to achieve maximum run speed on the ground.
@@ -98,9 +103,17 @@
                 }
             }
 
+            // Calculate the target velocity
+            float targetVelocity = horizontal * this.RunSpeed;
+
             // Apply damping to velocity
             float damping = this.characterController.IsGrounded ? this.TimeToRunOnGround : this.TimeToRunInAir;
-            velocity.x = Mathf.Lerp(velocity.x, horizontal * this.RunSpeed, Time.deltaTime / damping);
+            if (velocity.x * targetVelocity < 0)
+            {
+                damping /= this.TurnSpeedScalar;
+            }
+
+            velocity.x = Mathf.Lerp(velocity.x, targetVelocity, Time.deltaTime / damping);
 
             // Apply gravity
             velocity.y += this.Gravity * Time.deltaTime;
