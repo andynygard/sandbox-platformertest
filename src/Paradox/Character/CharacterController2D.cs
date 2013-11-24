@@ -164,7 +164,7 @@
 
             for (var i = 0; i < this.VerticalRays; i++)
             {
-                var ray = new Vector2(initialRayOrigin.x + i * this.horizontalRaySeparation, initialRayOrigin.y);
+                var ray = new Vector2(initialRayOrigin.x + i * this.verticalRaySeparation, initialRayOrigin.y);
 
                 // Cast the ray until a platform is hit
                 RaycastHit2D hit = Physics2D.Raycast(ray, rayDirection, rayDistance, mask);
@@ -333,19 +333,23 @@
         /// </summary>
         private void UpdateRayOrigins()
         {
-            var colliderSize = new Vector2(
-                this.boxCollider.size.x * Mathf.Abs(this.transform.localScale.x),
-                this.boxCollider.size.y * Mathf.Abs(this.transform.localScale.y)) / 2;
-            this.rayOrigins.TopRight = transform.position + new Vector3(colliderSize.x, colliderSize.y);
+            float sizeX = this.boxCollider.size.x * Mathf.Abs(this.transform.localScale.x) / 2f;
+            float sizeY = this.boxCollider.size.y * Mathf.Abs(this.transform.localScale.y) / 2f;
+            var offset = new Vector3(
+                this.boxCollider.center.x * this.transform.localScale.x,
+                this.boxCollider.center.y * this.transform.localScale.y,
+                0);
+
+            this.rayOrigins.TopRight = transform.position + offset + new Vector3(sizeX, sizeY);
             this.rayOrigins.TopRight.x -= this.SkinWidth;
             this.rayOrigins.TopRight.y -= this.SkinWidth;
-            this.rayOrigins.TopLeft = transform.position + new Vector3(-colliderSize.x, colliderSize.y);
+            this.rayOrigins.TopLeft = transform.position + offset + new Vector3(-sizeX, sizeY);
             this.rayOrigins.TopLeft.x += this.SkinWidth;
             this.rayOrigins.TopLeft.y -= this.SkinWidth;
-            this.rayOrigins.BottomRight = transform.position + new Vector3(colliderSize.x, -colliderSize.y);
+            this.rayOrigins.BottomRight = transform.position + offset + new Vector3(sizeX, -sizeY);
             this.rayOrigins.BottomRight.x -= this.SkinWidth;
             this.rayOrigins.BottomRight.y += this.SkinWidth;
-            this.rayOrigins.BottomLeft = transform.position + new Vector3(-colliderSize.x, -colliderSize.y);
+            this.rayOrigins.BottomLeft = transform.position + offset + new Vector3(-sizeX, -sizeY);
             this.rayOrigins.BottomLeft.x += this.SkinWidth;
             this.rayOrigins.BottomLeft.y += this.SkinWidth;
         }
