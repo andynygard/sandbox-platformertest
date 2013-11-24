@@ -84,10 +84,14 @@
             }
             else
             {
-                // If the jump button is released, enact an 'invisible ceiling'
                 if (jump == 0 || this.characterController.IsGrounded)
                 {
-                    velocity.y = 0;
+                    // If the jump button is released, enact an 'invisible ceiling'
+                    if (velocity.y > 0)
+                    {
+                        velocity.y = 0;
+                    }
+
                     this.jumpInProgress = false;
                 }
             }
