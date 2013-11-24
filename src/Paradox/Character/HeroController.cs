@@ -12,7 +12,7 @@
     {
         private CharacterController2D characterController;
         private Animator animator;
-        private bool jumpInProgress;
+        private bool jumpButtonPressed;
 
         /// <summary>
         /// The gravity effecting the character.
@@ -71,28 +71,30 @@
                     new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
             }
 
-            if (!this.jumpInProgress)
+            if (this.jumpButtonPressed)
             {
-                // Check for jumping
-                if (jump > 0 && this.characterController.IsGrounded)
+                // Check if jump button was released
+                if (jump == 0)
                 {
-                    this.jumpInProgress = true;
-
-                    // Apply the velocity required to reach the jump height
-                    velocity.y = Mathf.Sqrt(-2 * this.MaxJumpHeight * this.Gravity);
+                    this.jumpButtonPressed = false;
+                    if (velocity.y > 0)
+                    {
+                        // If the jump button is released on ascent, enact an 'invisible ceiling'
+                        velocity.y = 0;
+                    }
                 }
             }
             else
             {
-                if (jump == 0 || this.characterController.IsGrounded)
+                // Check if jump button was pressed
+                if (jump > 0)
                 {
-                    // If the jump button is released, enact an 'invisible ceiling'
-                    if (velocity.y > 0)
+                    this.jumpButtonPressed = true;
+                    if (this.characterController.IsGrounded)
                     {
-                        velocity.y = 0;
+                        // Apply the velocity required to reach the jump height
+                        velocity.y = Mathf.Sqrt(-2 * this.MaxJumpHeight * this.Gravity);
                     }
-
-                    this.jumpInProgress = false;
                 }
             }
 
