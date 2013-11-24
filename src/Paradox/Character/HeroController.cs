@@ -108,7 +108,10 @@
             // Now attempt to move the character
             this.characterController.Move(velocity * Time.deltaTime);
 
-            this.animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x));
+            // Update the animation state
+            float horizontalSpeed = Mathf.Abs(velocity.x);
+            this.animator.speed = horizontalSpeed / this.RunSpeed;
+            this.animator.SetFloat("HorizontalSpeed", horizontalSpeed);
             this.animator.SetBool("IsGrounded", this.characterController.IsGrounded);
         }
     }
