@@ -10,6 +10,8 @@
     [RequireComponent(typeof(Animator))]
     public class HeroController : MonoBehaviour
     {
+        private const float MinAnimationSpeed = 0.2f;
+
         private CharacterController2D characterController;
         private Animator animator;
         private bool jumpButtonPressed;
@@ -70,6 +72,8 @@
             float horizontal = Input.GetAxis("Horizontal");
             float jump = Input.GetAxis("Jump");
 
+            bool isTurning = horizontal * velocity.x < 0;
+
             // Flip the object if direction has changed
             if (horizontal > 0 && this.transform.localScale.x < 0f)
             {
@@ -88,7 +92,7 @@
             // Calculate acceleration factor
             float accelerationFactor = this.characterController.IsGrounded ?
                 this.GroundAcceleration : this.AirAcceleration;
-            if (this.characterController.IsGrounded && velocity.x * targetVelocity < 0)
+            if (this.characterController.IsGrounded && isTurning)
             {
                 accelerationFactor *= this.GroundTurnScaling;
             }
@@ -138,9 +142,16 @@
 
             // Update the animation state
             float horizontalSpeed = Mathf.Abs(velocity.x);
-            this.animator.speed = horizontalSpeed / this.RunSpeed;
+            float animSpeed = horizontalSpeed / this.RunSpeed;
+            if (animSpeed < HeroController.MinAnimationSpeed)
+            {
+                animSpeed = HeroController.MinAnimationSpeed;
+            }
+            this.animator.speed = animSpeed;
             this.animator.SetFloat("HorizontalSpeed", horizontalSpeed);
+            this.animator.SetBool("IsAccelerating", horizontal != 0);
             this.animator.SetBool("IsGrounded", this.characterController.IsGrounded);
+            this.animator.SetBool("IsTurning", isTurning);
         }
     }
 }
