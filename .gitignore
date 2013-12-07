@@ -2,13 +2,13 @@ bin/
 obj/
 Temp/
 Library/
+*/Assets/Libs/*.dll
 *.suo
 *.user
 *.cachefile
 *.pidb
 *.userprefs
 *.unityproj
-*.dll
 *.pdb
 StyleCop.Cache
 Settings.StyleCop
